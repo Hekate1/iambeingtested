@@ -22,7 +22,7 @@ app.post('/sent-text', function (req, res) {
 
     var parameters = {
       extract: 'taxonomy, title, concepts, authors, doc-emotion, entities, keywords, doc-sentiment',
-      url: textInBox;
+      url: textInBox
     };
 
     alchemy_language.combined(parameters, function (err, response) {
