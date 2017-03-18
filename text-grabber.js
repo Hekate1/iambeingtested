@@ -193,7 +193,7 @@ app.post('/sent-text', function (req, res) {
         //*doc-sentiment*
           
         //REPLY HERE
-        var reply = "";
+        var reply = "This article, " + title + ", by " + author + " expresses " + degree + " " + emotion + ". It is a " + taxonomy + " article that discusses " + concepts + ".";;
         res.status(200).send("\n" + title + " \n" + authors + " \n" + taxonomy + " \n" + concepts + " \n" + entities + " \n" + keywords + " \n" + emotion + " \n" + sentiment);
       }
         
