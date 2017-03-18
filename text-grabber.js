@@ -13,7 +13,6 @@ app.use(express.static(__dirname));
 app.post('/sent-text', function (req, res) {
     
     var textInBox = ch.text()
-    console.log(textInBox);
     
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
@@ -23,7 +22,7 @@ app.post('/sent-text', function (req, res) {
 
     var parameters = {
       extract: 'taxonomy, title, concepts, authors, doc-emotion, entities, keywords, doc-sentiment',
-      url: 'https://www.nytimes.com/2017/03/17/world/europe/trump-britain-obama-wiretap-gchq.html?_r=0'
+      url: textInBox;
     };
 
     alchemy_language.combined(parameters, function (err, response) {
