@@ -8,7 +8,7 @@ var alchemy_language = new AlchemyLanguageV1({
 });
 
 var parameters = {
-  extract: 'taxonomy, title',
+  extract: 'taxonomy, title, concepts, authors',
   url: 'https://www.nytimes.com/2017/03/17/world/europe/trump-britain-obama-wiretap-gchq.html?_r=0'
 };
 
@@ -19,7 +19,8 @@ alchemy_language.combined(parameters, function (err, response) {
   }
    
   else
-  { 
+  {
+    //Taxonomy
     var score = 1;
     var i = 0;
     var taxonomy = "";
@@ -35,5 +36,46 @@ alchemy_language.combined(parameters, function (err, response) {
         }
         i++;
     }
+    //*Taxonomy*
+      
+    //Title
+    score = 1;
+    i = 0;
+    var title = response.title;
+    //*Title*
+    
+    //Concepts
+    score = 1;
+    i = 0;
+    var concepts = "";
+    while(score > .5)
+    {
+        score = response.concepts[i].relevance;
+        
+        if(i != 0 && score > .5)
+            concepts += "\n"
+            
+        if(i == 0 || score > .5)
+        {
+            concepts += response.concepts[i].text;
+        }
+        i++;
+    }
+    //*Concepts* 
+      
+    //Authors
+    var authors = "";
+    for(var j = 0; j < response.authors.names.length; j++)
+    {
+        if(j != 0)
+            authors += "\n";
+            
+        authors += response.authors.names[j];
+    }
+    //*Authors* 
+      
+      
+    document.getElementById('authors').value = authors;
+      
   }
 });
