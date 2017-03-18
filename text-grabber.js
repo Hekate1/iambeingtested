@@ -167,10 +167,10 @@ app.post('/sent-text', function (req, res) {
             score = response.keywords[i].score;
             
             if(i >= response.keywords.length)
-                score = 0
+                score = 0;
             
             if(i != 0)
-                keywords += "\n"
+                keywords += "\n";
 
             
             if(i == 0 || score > .5)
@@ -180,9 +180,18 @@ app.post('/sent-text', function (req, res) {
             i++;
         }
         //*Key words* 
+        
+        //doc-sentiment
+        var score = response.docSentiment.score;
+        if(score < 0)
+            score *= -1;
+        var sentiment = score + "% " + response.docSentiment.type;
+        
+        //*doc-sentiment*
           
-          //REPLY HERE
-         res.status(200).send(authors);
+        //REPLY HERE
+        res.status(200).send(JSON.stringify(response.authors.names));
+        //res.status(200).send(title + " " + authors + " " + taxonomy + " " + concepts + " " + entities + " " + keywords + " " + emotion + " " + sentiment);
 
       }
         
