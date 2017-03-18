@@ -18,8 +18,12 @@ var parameters = {
 
 alchemy_language.combined(parameters, function (err, response) {
   if (err)
-    console.log('error:', err);
+  { 
+      console.log('error:', err);
+  }
+   
   else
+  { 
     var score = 1;
     var i = 0;
     while(score > .5){
