@@ -20,7 +20,7 @@ app.post('/sent-text', function (req, res) {
     });
 
     var parameters = {
-      extract: 'taxonomy, title, concepts, authors, doc-emotion, entities, keywords',
+      extract: 'taxonomy, title, concepts, authors, doc-emotion, entities, keywords, doc-sentiment',
       url: 'https://www.nytimes.com/2017/03/17/world/europe/trump-britain-obama-wiretap-gchq.html?_r=0'
     };
 
@@ -158,7 +158,7 @@ app.post('/sent-text', function (req, res) {
         }
         //*Entities* 
 
-        //Key words
+        //Keywords
         score = 1;
         i = 0;
         var keywords = "";
