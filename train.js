@@ -1,5 +1,5 @@
 "use strict";
-const NaturalLanguageClassifierV1 = require('watson-developer-cloud/natural-language-classifier/v1');
+const NaturalLanguageClassifierV1 = require("watson-developer-cloud/natural-language-classifier/v1");
 const fs = require("fs");
                    
 const natural_language_classifier = new NaturalLanguageClassifierV1({
