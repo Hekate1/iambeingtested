@@ -11,7 +11,7 @@ const natural_language_classifier = new NaturalLanguageClassifierV1({
 natural_language_classifier.classify(
     {
         text: "Is it sunny?",
-        classifier_id: "<CLASSIFIER ID>"
+        classifier_id: "./emotion.js"
     },
     function(err, response) {
         if (err) {
