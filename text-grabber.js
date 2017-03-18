@@ -191,8 +191,7 @@ app.post('/sent-text', function (req, res) {
         //*doc-sentiment*
           
         //REPLY HERE
-        //res.status(200).send(title + " " + authors + " " + taxonomy + " " + concepts + " " + entities + " " + keywords + " " + emotion + " " + sentiment);
-          res.send("Yolo")
+        res.status(200).send(title + " " + authors + " " + taxonomy + " " + concepts + " " + entities + " " + keywords + " " + emotion + " " + sentiment);
       }
         
     });
