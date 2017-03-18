@@ -37,7 +37,7 @@ app.post('/sent-text', function (req, res) {
     console.log("HERE!") 
       if (err)
       { 
-          console.log('error:', err);
+          res.status(500).send(err);
       }
 
       else
@@ -97,7 +97,7 @@ app.post('/sent-text', function (req, res) {
         //*Authors* 
 
         console.log("HERE1")  
-        document.getElementById('authors').value = authors;
+         res.status(200).send(authors);
 
       }
         
