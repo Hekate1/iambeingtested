@@ -2,23 +2,14 @@ var express = require('express');
 var app = express();
 
 var server = app.listen(process.env.PORT || 1800, function () {
-    console.log("server1")
    var host = server.address().address
    var port = server.address().port
-   console.log("server2")
 })
-
-/*app.get('/', function(req, res) {
-    console.log("get1")
-    res.sendFile(path.join(__dirname, '../public', 'index.html'));
-    console.log("get2")
-});*/
 
 app.use(express.static(__dirname));
 
 app.post('/sent-text', function (req, res) {
     
-    console.log("post1")
     //var textInBox = document.getElementById('textBox').value;
     //console.log(textInBox);
 
@@ -34,7 +25,6 @@ app.post('/sent-text', function (req, res) {
     };
 
     alchemy_language.combined(parameters, function (err, response) {
-    console.log("HERE!") 
       if (err)
       { 
           res.status(500).send(err);
@@ -48,10 +38,14 @@ app.post('/sent-text', function (req, res) {
         var taxonomy = "";
         while(score > .5)
         {
+            score = response.taxonomy[i].score;
+            
+            if(i >= response.entities.length)
+                score = 0
+            
             if(i != 0)
                 taxonomy += "\n"
 
-            score = response.taxonomy[i].score;
             if(i == 0 || score > .5)
             {
                 taxonomy += response.taxonomy[i].label;
@@ -74,6 +68,9 @@ app.post('/sent-text', function (req, res) {
         {
             score = response.concepts[i].relevance;
 
+            if(i >= response.entities.length)
+                score = 0
+            
             if(i != 0 && score > .5)
                 concepts += "\n"
 
@@ -95,8 +92,97 @@ app.post('/sent-text', function (req, res) {
             authors += response.authors.names[j];
         }
         //*Authors* 
+        
+        //Doc-emotion
+        var emotion = "";
+        var before = 0;
+        if(response.docEmotions.anger > .5)
+        {
+            emotion += "anger"
+            var before = 1;
+        }
+        if(response.docEmotions.disgust > .5)
+        {
+            if(before == 1)
+                emotion += " and disgust"
+            else
+                emotion += "disgust"
+            var before = 1;
+        }
+        if(response.docEmotions.fear > .5)
+        {
+            if(before == 1)
+                emotion += " and fear"
+            else
+                emotion += "fear"
+            var before = 1;
+        }
+        if(response.docEmotions.joy > .5)
+        {
+            if(before == 1)
+                emotion += " and joy"
+            else
+                emotion += "joy"
+            var before = 1;
+        }
+        if(response.docEmotions.sadness > .5)
+        {
+            if(before == 1)
+                emotion += " and sadness"
+            else
+                emotion += "sadness"
+            var before = 1;
+        }
+        //*Doc-emotion*   
+          
+        //Entities
+        score = 1;
+        i = 0;
+        var entities = "";
+        while(score > .5)
+        {
+            score = response.entities[i].score;
+            
+            if(i >= response.entities.length)
+                score = 0
+            
+            if(i != 0)
+                entities += "\n"
 
-        console.log("HERE1")  
+            
+            if(i == 0 || score > .5)
+            {
+                entites += response.entites[i].type + " : " + response.entites[i].text;
+            }
+            i++;
+        }
+        //*Entities* 
+          
+          
+        //Key words
+        score = 1;
+        i = 0;
+        var keywords = "";
+        while(score > .5)
+        {
+            score = response.keywords[i].score;
+            
+            if(i >= response.keywords.length)
+                score = 0
+            
+            if(i != 0)
+                keywords += "\n"
+
+            
+            if(i == 0 || score > .5)
+            {
+                entites += response.keywords[i].text;
+            }
+            i++;
+        }
+        //*Key words* 
+          
+          //REPLY HERE
          res.status(200).send(authors);
 
       }
