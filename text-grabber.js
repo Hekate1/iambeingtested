@@ -11,9 +11,24 @@ var params = {
   text: 'IBM Watson won the Jeopardy television show hosted by Alex Trebek'
 };
 
-alchemy_language.sentiment(params, function (err, response) {
+var parameters = {
+  extract: 'taxonomy, title',
+  url: 'https://www.nytimes.com/2017/03/17/world/europe/trump-britain-obama-wiretap-gchq.html?_r=0'
+};
+
+alchemy_language.combined(parameters, function (err, response) {
   if (err)
     console.log('error:', err);
   else
-    console.log(JSON.stringify(response, null, 2));
-});
+    var score = 1;
+    var i = 0;
+    while(score > .5){
+        score = response.taxonomy[i].score;
+        if(i == 0 || score > .5)
+        {
+            console.log(response.taxonomy[i].label);
+        }
+            
+        i++;
+    }
+})
