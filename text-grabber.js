@@ -1,5 +1,7 @@
 var express = require('express');
-var app = express();
+var cheerio = require('cheerio');
+//var app = express();
+//var ch = cheerio.load('<h2 class="title">Hello world</h2>');
 
 var server = app.listen(process.env.PORT || 1800, function () {
    var host = server.address().address
@@ -11,7 +13,6 @@ app.use(express.static(__dirname));
 app.post('/sent-text', function (req, res) {
     
     //var textInBox = document.getElementById('textBox').value;
-    //console.log(textInBox);
 
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
@@ -190,8 +191,8 @@ app.post('/sent-text', function (req, res) {
         //*doc-sentiment*
           
         //REPLY HERE
-        res.status(200).send(title + " " + authors + " " + taxonomy + " " + concepts + " " + entities + " " + keywords + " " + emotion + " " + sentiment);
-
+        //res.status(200).send(title + " " + authors + " " + taxonomy + " " + concepts + " " + entities + " " + keywords + " " + emotion + " " + sentiment);
+          res.send("Yolo")
       }
         
     });
