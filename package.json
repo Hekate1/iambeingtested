@@ -1,15 +1,14 @@
 {
-    "name": "Sherlock-JSON",
-    "preferGlobal": true,
-    "version": "0.0.1",
-    "engines": {
-        "node": ">=0.10"
-    },
-    "scripts": {
-        "start": "node text-grabber.js"
-    },
-    "dependencies": {
-        "express": "~3.4.7"
-    }
-    
+  "name": "Sherlock-JSON",
+  "preferGlobal": true,
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "scripts": {
+    "start": "node text-grabber.js"
+  },
+  "dependencies": {
+    "express": "^3.4.8"
+  }
 }
