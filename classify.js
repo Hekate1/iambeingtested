@@ -3,8 +3,8 @@ const NaturalLanguageClassifierV1 = require("watson-developer-cloud/natural-lang
 const fs = require("fs");
 
 const natural_language_classifier = new NaturalLanguageClassifierV1({
-    username: "<USERNAME>",
-    password: "<PASSWORD>",
+    username: "92cac92c-59b7-49c0-ad20-df0f66c06ada",
+    password: "MrIOePbsNZWx",
     version: "v1"
 });
 
