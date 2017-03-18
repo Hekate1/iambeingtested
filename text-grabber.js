@@ -152,7 +152,7 @@ app.post('/sent-text', function (req, res) {
             
             if(i == 0 || score > .5)
             {
-                entites += response.entites[i].type + " : " + response.entites[i].text;
+                entities += response.entities[i].type + " : " + response.entities[i].text;
             }
             i++;
         }
@@ -175,7 +175,7 @@ app.post('/sent-text', function (req, res) {
             
             if(i == 0 || score > .5)
             {
-                entites += response.keywords[i].text;
+                keywords += response.keywords[i].text;
             }
             i++;
         }
