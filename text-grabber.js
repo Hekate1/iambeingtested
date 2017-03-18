@@ -12,7 +12,8 @@ app.use(express.static(__dirname));
 
 app.post('/sent-text', function (req, res) {
     
-    var textInBox = ch.text()
+    var textInBox = ch.text();
+    console.log(textInBox);
     
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
