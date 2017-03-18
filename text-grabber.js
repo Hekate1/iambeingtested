@@ -1,18 +1,20 @@
 var express = require('express');
 var app = express();
 
-var server = app.listen(process.env.PORT, function () {
-    consol.log("server1")
+var server = app.listen(process.env.PORT || 1800, function () {
+    console.log("server1")
    var host = server.address().address
    var port = server.address().port
-   consol.log("server2")
+   console.log("server2")
 })
 
-app.get('/', function(req, res) {
-    consol.log("get1")
-    res.sendFile(path.join(__dirname + '/index.html'));
-    consol.log("get2")
-});
+/*app.get('/', function(req, res) {
+    console.log("get1")
+    res.sendFile(path.join(__dirname, '../public', 'index.html'));
+    console.log("get2")
+});*/
+
+app.use(express.static(__dirname));
 
 app.post('/sent-text', function (req, res) {
     
