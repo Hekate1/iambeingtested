@@ -6,6 +6,10 @@ var server = app.listen(80, function () {
    var port = server.address().port
 })
 
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
+
 app.post('/sent-text', function (req, res) {
     
     //var textInBox = document.getElementById('textBox').value;
