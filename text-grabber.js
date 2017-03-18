@@ -10,7 +10,6 @@ app.use(express.static(__dirname));
 
 app.post('/sent-text', function (req, res) {
     
-    var text = req.textBox.value;
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
     var alchemy_language = new AlchemyLanguageV1({
