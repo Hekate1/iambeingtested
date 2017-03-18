@@ -37,7 +37,7 @@ app.post('/sent-text', function (req, res) {
         //Taxonomy
         var score = 1;
         var i = 0;
-        var taxonomy = "";
+        var taxonomy = "\n";
         while(score > .5)
         {
             score = response.taxonomy[i].score;
@@ -54,18 +54,20 @@ app.post('/sent-text', function (req, res) {
             }
             i++;
         }
+        taxonomy = taxonomy.substring(1);
         //*Taxonomy*
 
         //Title
         score = 1;
         i = 0;
-        var title = response.title;
+        var title = "\n" + response.title;
+        title = title.italics();
         //*Title*
 
         //Concepts
         score = 1;
         i = 0;
-        var concepts = "";
+        var concepts = "\n";
         while(score > .5)
         {
             score = response.concepts[i].relevance;
@@ -85,7 +87,7 @@ app.post('/sent-text', function (req, res) {
         //*Concepts* 
 
         //Authors
-        var authors = "";
+        var authors = "\n";
         for(var j = 0; j < response.authors.names.length; j++)
         {
             if(j != 0)
@@ -96,7 +98,7 @@ app.post('/sent-text', function (req, res) {
         //*Authors* 
           
         //Doc-emotion
-        var emotion = "";
+        var emotion = "\n";
         var before = 0;
         if(response.docEmotions.anger > .5)
         {
@@ -140,7 +142,7 @@ app.post('/sent-text', function (req, res) {
         //Entities
         score = 1;
         i = 0;
-        var entities = "";
+        var entities = "\n";
         while(score > .5)
         {
             score = response.entities[i].score;
@@ -163,7 +165,7 @@ app.post('/sent-text', function (req, res) {
         //Keywords
         score = 1;
         i = 0;
-        var keywords = "";
+        var keywords = "\n";
         while(score > .5)
         {
             score = response.keywords[i].score;
@@ -187,11 +189,12 @@ app.post('/sent-text', function (req, res) {
         var score = response.docSentiment.score;
         if(score < 0)
             score *= -1;
-        var sentiment = score + "% " + response.docSentiment.type;
+        var sentiment = "\n" + score + "% " + response.docSentiment.type;
         
         //*doc-sentiment*
           
         //REPLY HERE
+        var reply = "";
         res.status(200).send(title + " " + authors + " " + taxonomy + " " + concepts + " " + entities + " " + keywords + " " + emotion + " " + sentiment);
       }
         
