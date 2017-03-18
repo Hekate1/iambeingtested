@@ -92,7 +92,7 @@ app.post('/sent-text', function (req, res) {
             authors += response.authors.names[j];
         }
         //*Authors* 
-        
+        console.log("1");
         //Doc-emotion
         var emotion = "";
         var before = 0;
@@ -134,7 +134,7 @@ app.post('/sent-text', function (req, res) {
             var before = 1;
         }
         //*Doc-emotion*   
-          
+        console.log("2");
         //Entities
         score = 1;
         i = 0;
@@ -157,8 +157,7 @@ app.post('/sent-text', function (req, res) {
             i++;
         }
         //*Entities* 
-          
-          
+        console.log("3");
         //Key words
         score = 1;
         i = 0;
