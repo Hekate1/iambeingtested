@@ -93,5 +93,6 @@ app.post('/sent-text', function (req, res) {
         document.getElementById('authors').value = authors;
 
       }
+        
     });
 })
