@@ -1,7 +1,5 @@
 var express = require('express');
-var cheerio = require('cheerio');
 var app = express();
-var ch = cheerio.load('<textarea name="textBox" </textarea>');
 
 var server = app.listen(process.env.PORT || 1800, function () {
    var host = server.address().address
@@ -11,10 +9,8 @@ var server = app.listen(process.env.PORT || 1800, function () {
 app.use(express.static(__dirname));
 
 app.post('/sent-text', function (req, res) {
-    console.log(req);
-    //var textInBox = req
-    console.log(textInBox);
     
+    var text = req.textBox.value;
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
     var alchemy_language = new AlchemyLanguageV1({
@@ -23,7 +19,7 @@ app.post('/sent-text', function (req, res) {
 
     var parameters = {
       extract: 'taxonomy, title, concepts, authors, doc-emotion, entities, keywords, doc-sentiment',
-      url: textInBox
+      url: 'https://www.nytimes.com/2017/03/17/world/europe/trump-britain-obama-wiretap-gchq.html?_r=0'
     };
 
     alchemy_language.combined(parameters, function (err, response) {
