@@ -35,4 +35,5 @@ alchemy_language.combined(parameters, function (err, response) {
             
         i++;
     }
-})
+  }
+});
