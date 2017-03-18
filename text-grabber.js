@@ -2,16 +2,21 @@ var express = require('express');
 var app = express();
 
 var server = app.listen(process.env.PORT, function () {
+    consol.log("server1")
    var host = server.address().address
    var port = server.address().port
+   consol.log("server2")
 })
 
 app.get('/', function(req, res) {
+    consol.log("get1")
     res.sendFile(path.join(__dirname + '/index.html'));
+    consol.log("get2")
 });
 
 app.post('/sent-text', function (req, res) {
     
+    console.log("post1")
     //var textInBox = document.getElementById('textBox').value;
     //console.log(textInBox);
 
