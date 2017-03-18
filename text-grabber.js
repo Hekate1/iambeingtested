@@ -91,7 +91,7 @@ app.post('/sent-text', function (req, res) {
         for(var j = 0; j < response.authors.names.length; j++)
         {
             if(j != 0)
-                authors += "\n";
+                authors += ", ";
 
             authors += response.authors.names[j];
         }
@@ -189,7 +189,7 @@ app.post('/sent-text', function (req, res) {
         var score = response.docSentiment.score;
         if(score < 0)
             score *= -1;
-        var sentiment = score + "% " + response.docSentiment.type;
+        var sentiment = (score*100) + "% " + response.docSentiment.type;
         
         //*doc-sentiment*
           
