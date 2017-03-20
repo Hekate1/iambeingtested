@@ -2,16 +2,14 @@ var express = require('express');
 var app = express();
 
 var server = app.listen(process.env.PORT || 1800, function () {
-    console.log("GOT HERE1")
    var host = server.address().address
    var port = server.address().port
-   console.log("GOT HERE2")
 })
 
 app.use(express.static(__dirname));
 
 app.post('/sent-text', function (req, res) {
-    console.log("GOT HERE3")
+
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
     var alchemy_language = new AlchemyLanguageV1({
@@ -22,7 +20,7 @@ app.post('/sent-text', function (req, res) {
       extract: 'taxonomy, title, concepts, authors, doc-emotion, entities, keywords, doc-sentiment',
       url: 'https://www.nytimes.com/2017/03/17/world/europe/trump-britain-obama-wiretap-gchq.html?_r=0'
     };
-    console.log("GOT HERE4")
+
     alchemy_language.combined(parameters, function (err, response) {
       if (err)
       { 
@@ -189,9 +187,9 @@ app.post('/sent-text', function (req, res) {
         var sentiment = (score*100) + "% " + response.docSentiment.type;
         
         //*doc-sentiment*
-        console.log("GOT HERE5")
+          
         //REPLY HERE
-        var reply = "This article, " + title + " by " + author + ", expresses " + degree + " " + emotion + ". It is a " + taxonomy + " article that discusses " + concepts + ".";
+        var reply = "This article, " + title + " by " + authors + ", expresses " + degree + " " + emotion + ". It is a " + taxonomy + " article that discusses " + concepts + ".";
         res.status(200).send(reply);
       }
         
