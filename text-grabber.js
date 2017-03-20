@@ -189,7 +189,7 @@ app.post('/sent-text', function (req, res) {
         //*doc-sentiment*
           
         //REPLY HERE
-        var reply = "This article, " + title + " by " + authors + ", is " + sentiment + " with " + emotion + ". It is a " + taxonomy + " article that discusses " + concepts + ". The entites involved are " + entities + " and the keywords" + keywords;
+        var reply = "This article, " + title + " by " + authors + ", is " + sentiment + " with " + emotion + ". It is a " + taxonomy + " article that discusses " + concepts + ". The entit(y/ies) involved is/are " + entities + " and the keyword(s) is/are " + keywords;
         res.status(200).send(reply);
       }
         
