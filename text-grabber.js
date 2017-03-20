@@ -169,7 +169,7 @@ app.post('/sent-text', function (req, res) {
                 score = 0;
             
             if(i != 0)
-                keywords += ", ;
+                keywords += ", ";
 
             
             if(i == 0 || score > .5)
@@ -189,7 +189,7 @@ app.post('/sent-text', function (req, res) {
         //*doc-sentiment*
           
         //REPLY HERE
-        var reply = "This article, " + title + " by " + authors + ", is " + sentiment + " with " + emotion + ". It is a " + taxonomy + " article that discusses " + concepts + ". The entites involved are " + entities + " and the keywords" + ;
+        var reply = "This article, " + title + " by " + authors + ", is " + sentiment + " with " + emotion + ". It is a " + taxonomy + " article that discusses " + concepts + ". The entites involved are " + entities + " and the keywords" + keywords;
         res.status(200).send(reply);
       }
         
