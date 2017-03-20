@@ -9,7 +9,7 @@
     "start": "node text-grabber.js"
   },
   "dependencies": {
-    "express": "~3.4.8",
+    "express": "~3.4.7",
     "watson-developer-cloud": "2.27.0"
   }
 }
