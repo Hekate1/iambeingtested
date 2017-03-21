@@ -40,8 +40,11 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script>
+            console.log("1")
             $(document).ready(function(){
+                console.log("2")
                 $("submit").click(function(){
+                    console.log("3")
                     $.post("/sent-text", function(data) {
                         $("result").html(data);
                         document.getElementById("result").style.display = "block"
