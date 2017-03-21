@@ -11,7 +11,7 @@ app.use(express.static(__dirname));
 
 app.get('/sent-text', function (data, res) {
     console.log("GOT HERE1")
-    console.log(data.url.query)
+    console.log(data)
     console.log("GOT HERE2")
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
@@ -24,7 +24,7 @@ app.get('/sent-text', function (data, res) {
       url: 'https://www.nytimes.com/2017/03/17/world/europe/trump-britain-obama-wiretap-gchq.html?_r=0'
     };
 
-    alchemy_language.combined(parameters, function (err, response) {
+    /*alchemy_language.combined(parameters, function (err, response) {
       if (err)
       { 
           res.status(500).send(err);
@@ -195,7 +195,7 @@ app.get('/sent-text', function (data, res) {
         console.log("GOT HERE3")  
         var reply = "This article, " + title + " by " + authors + ", is " + sentiment + " with " + emotion + ". It is a " + taxonomy + " article that discusses " + concepts + ". The entit(y/ies) involved is/are " + entities + " and the keyword(s) is/are " + keywords + ".";
         res.status(200).send(reply);
-      }
-        
+      }*/
+        res.status(200).send("TEST TEXT")
     });
 })
