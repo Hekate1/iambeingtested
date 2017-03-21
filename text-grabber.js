@@ -9,9 +9,9 @@ var server = app.listen(process.env.PORT || 1800, function () {
 
 app.use(express.static(__dirname));
 
-app.post('/sent-text', function (req, res) {
+app.post('/sent-text', function (data, res) {
     console.log("GOT HERE")
-    cosole.log(data)
+    console.log(data)
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
     var alchemy_language = new AlchemyLanguageV1({
