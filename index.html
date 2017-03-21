@@ -29,7 +29,7 @@
         </p>
         
         <p>
-            <textarea name="textBox" rows="1" cols="120"></textarea>
+            <textarea id="textBox" name="textBox" rows="1" cols="120"></textarea>
             <br></br>
             <button id="submit" type="submit" name="submit" onclick="sendText()">Get tl;dr</button>
             <br></br>
@@ -39,8 +39,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script>
             function sendText() {
-                $.post("/sent-text", function(data) {
-                    $("result").html(data);
+                $.post("/sent-text", function(document.getElementById("textBox").value) {
+                    $("result").html(reply);
                     document.getElementById("result").style.display = "block"
                 });
             }
