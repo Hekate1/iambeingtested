@@ -29,11 +29,25 @@
         </p>
         
         <p>
-            <form name="textBox" action="/sent-text" method = "post">
-            <textarea name="textBox" rows="1" cols="120"> </textarea>
+            <form name="textBox">
+                <textarea name="textBox" rows="1" cols="120"></textarea>
                 <br></br>
-            <input type="submit" name="submit" value="Get tl;dr" > </input>
-        </form>
-        </p>     
+                <input type="submit" name="submit" value="Get tl;dr" > </input>
+            </form>
+            <br></br>
+            <textarea name="result" style="display: none"> </textarea>
+        </p>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("submit").click(function(){
+                    $.post( "ajax/test.html", function( data ) {
+                        $("result").html(data);
+                        document.getElementById("result").style.display = "block"
+                    });
+                });
+            });
+</script>
     </body>
 </html>
