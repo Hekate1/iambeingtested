@@ -42,7 +42,7 @@
         <script>
             $(document).ready(function(){
                 $("submit").click(function(){
-                    $.post( "ajax/test.html", function( data ) {
+                    $.post("/sent-text", function(data) {
                         $("result").html(data);
                         document.getElementById("result").style.display = "block"
                     });
