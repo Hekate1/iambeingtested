@@ -11,7 +11,7 @@ app.use(express.static(__dirname));
 
 app.get('/sent-text', function (data, res) {
     console.log("GOT HERE1")
-    console.log(_parsedUrl.query)
+    console.log(data._parsedUrl.query)
     console.log("GOT HERE2")
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
