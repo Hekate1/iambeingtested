@@ -38,8 +38,9 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script>
+            var response
             function sendText() {
-                $.ajax({
+                response = $.ajax({
                     url: "/sent-text",
                     data: document.getElementById("textBox").value,
                     success: displayText()
@@ -47,6 +48,7 @@
                 
             }
             function displayText() {
+                document.getElementById("result").value = response
                 document.getElementById("result").style.display = "block"        
             }
 </script>

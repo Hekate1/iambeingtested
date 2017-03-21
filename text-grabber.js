@@ -10,9 +10,7 @@ var server = app.listen(process.env.PORT || 1800, function () {
 app.use(express.static(__dirname));
 
 app.get('/sent-text', function (data, res) {
-    console.log("GOT HERE1")
-    console.log(data._parsedUrl.query)
-    console.log("GOT HERE2")
+    
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
     var alchemy_language = new AlchemyLanguageV1({
@@ -21,7 +19,7 @@ app.get('/sent-text', function (data, res) {
 
     var parameters = {
       extract: 'taxonomy, title, concepts, authors, doc-emotion, entities, keywords, doc-sentiment',
-      url: 'https://www.nytimes.com/2017/03/17/world/europe/trump-britain-obama-wiretap-gchq.html?_r=0'
+      url: data._parsedUrl.query
     };
 
     /*alchemy_language.combined(parameters, function (err, response) {
