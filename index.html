@@ -40,15 +40,15 @@
         <script>
             var response
             function sendText() {
-                response = $.ajax({
+                $.ajax({
                     url: "/sent-text",
                     data: document.getElementById("textBox").value,
-                    success: displayText()
+                    success: displayText(data)
                 });
                 
             }
-            function displayText() {
-                document.getElementById("result").value = response
+            function displayText(data) {
+                document.getElementById("result").value = data
                 document.getElementById("result").style.display = "block"        
             }
 </script>
