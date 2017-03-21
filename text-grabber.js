@@ -1,4 +1,5 @@
 var express = require('express');
+var fs = require("fs");
 var app = express();
 
 var server = app.listen(process.env.PORT || 1800, function () {
@@ -8,8 +9,8 @@ var server = app.listen(process.env.PORT || 1800, function () {
 
 app.use(express.static(__dirname));
 
-app.post('/sent-text', function (req, res) {
-
+app.get('/sent-text', function (data, res) {
+    
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
     var alchemy_language = new AlchemyLanguageV1({
@@ -18,7 +19,7 @@ app.post('/sent-text', function (req, res) {
 
     var parameters = {
       extract: 'taxonomy, title, concepts, authors, doc-emotion, entities, keywords, doc-sentiment',
-      url: 'https://www.nytimes.com/2017/03/17/world/europe/trump-britain-obama-wiretap-gchq.html?_r=0'
+      url: data._parsedUrl.query
     };
 
     alchemy_language.combined(parameters, function (err, response) {
