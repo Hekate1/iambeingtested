@@ -9,9 +9,10 @@ var server = app.listen(process.env.PORT || 1800, function () {
 
 app.use(express.static(__dirname));
 
-app.post('/sent-text', function (data, res) {
-    console.log("GOT HERE")
+app.get('/sent-text', function (data, res) {
+    console.log("GOT HERE1")
     console.log(data)
+    console.log("GOT HERE2")
     var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 
     var alchemy_language = new AlchemyLanguageV1({
@@ -191,6 +192,7 @@ app.post('/sent-text', function (data, res) {
         //*doc-sentiment*
           
         //REPLY HERE
+        console.log("GOT HERE3")  
         var reply = "This article, " + title + " by " + authors + ", is " + sentiment + " with " + emotion + ". It is a " + taxonomy + " article that discusses " + concepts + ". The entit(y/ies) involved is/are " + entities + " and the keyword(s) is/are " + keywords + ".";
         res.status(200).send(reply);
       }
