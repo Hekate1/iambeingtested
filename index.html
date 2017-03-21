@@ -38,18 +38,16 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script>
-            var response
             function sendText() {
                 $.ajax({
                     url: "/sent-text",
                     data: document.getElementById("textBox").value,
-                    success: displayText(data)
+                    success: function(data){
+                        document.getElementById("result").value = data
+                document.getElementById("result").style.display = "block"    
+                    }
                 });
                 
-            }
-            function displayText(data) {
-                document.getElementById("result").value = data
-                document.getElementById("result").style.display = "block"        
             }
 </script>
     </body>
