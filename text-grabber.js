@@ -195,7 +195,8 @@ app.get('/sent-text', function (data, res) {
         console.log("GOT HERE3")  
         var reply = "This article, " + title + " by " + authors + ", is " + sentiment + " with " + emotion + ". It is a " + taxonomy + " article that discusses " + concepts + ". The entit(y/ies) involved is/are " + entities + " and the keyword(s) is/are " + keywords + ".";
         res.status(200).send(reply);
-      }*/
-        res.status(200).send("TEST TEXT")
-    });
+      }
+        
+    });*/
+    res.status(200).send("TEST TEXT")
 })
