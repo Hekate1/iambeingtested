@@ -13,7 +13,7 @@ app.use(express.static(__dirname));
 app.post('/array', function (data, res) {
     console.log(data.headers.myarray)
     var array = JSON.parse(data.headers.myarray)
-    
+    console.log(array[0][0])
     
     res.status(200).send()
 })
