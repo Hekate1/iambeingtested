@@ -60,8 +60,9 @@ app.post('/array', function (data, res) {
         console.log("Here2")
         var average = globalArray.map(function (num, index) {
             console.log(num + " : " + index)
-            return (num + array[idx])/2;
+            return (num + array[index])/2;
         });
+        console.log(average)
         globalArray = average
     }
     
