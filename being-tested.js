@@ -13,7 +13,7 @@ app.use(express.static(__dirname));
 app.post('/array', function (data, res) {
     var array = JSON.parse(data.headers.myarray)
     
-    var m1 = 5/((array[0][0] + array[1][0] + array[2][0] + array[3][0] + array[4][0])/5)
+    /*var m1 = 5/((array[0][0] + array[1][0] + array[2][0] + array[3][0] + array[4][0])/5)
     array[0][0] *= m1
     array[1][0] *= m1
     array[2][0] *= m1
@@ -46,15 +46,20 @@ app.post('/array', function (data, res) {
     array[1][4] *= m5
     array[2][4] *= m5
     array[3][4] *= m5
-    array[4][4] *= m5
+    array[4][4] *= m5*/
+    
+    var array2 = [(array[0][0] + array[1][0] + array[2][0] + array[3][0] + array[4][0])/5, (array[0][1] + array[1][1] + array[2][1] + array[3][1] + array[4][1])/5, (array[0][2] + array[1][2] + array[2][2] + array[3][2] + array[4][2])/5, (array[0][3] + array[1][3] + array[2][3] + array[3][3] + array[4][3])/5, (array[0][4] + array[1][4] + array[2][4] + array[3][4] + array[4][4])/5]
+    
+    console.log(array2)
     
     if(globalArray == null){
         console.log("Here1")
-        globalArray = array
+        globalArray = array2
     }
     else{
         console.log("Here2")
         var average = globalArray.map(function (num, idx) {
+            console.log(num + " : " + index)
             return (num + array[idx])/2;
         });
         globalArray = average
