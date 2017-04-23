@@ -48,7 +48,17 @@ app.post('/array', function (data, res) {
     array[3][4] *= m5
     array[4][4] *= m5
     
-    console.log(array)
+    if(globalArray == []){
+        globalArray = array
+    }
+    else{
+        var average = globalArray.map(function (num, idx) {
+            return (num + array[idx])/2;
+        });
+        globalArray = average
+    }
+    
+    console.log(globalArray)
     
     res.status(200).send()
 })
