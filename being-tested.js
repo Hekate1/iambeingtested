@@ -9,13 +9,6 @@ var server = app.listen(process.env.PORT || 1800, function () {
 
 app.use(express.static(__dirname));
 
-app.get('/sent-text', function (data, res) {
-    
-    var parameters = {
-      extract: 'taxonomy, title, concepts, authors, doc-emotion, entities, keywords, doc-sentiment',
-      url: data._parsedUrl.query
-    };
-
-   
-    });
+app.post('/array', function (data, res) {
+    print(data)
 })
