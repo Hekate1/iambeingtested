@@ -72,4 +72,4 @@ app.post('/array', function (data, res) {
 
 app.get('/array', function (data, res) {
     res.status(200).send(JSON.stringify(globalArray))
-}
+})
