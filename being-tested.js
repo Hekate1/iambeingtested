@@ -1,7 +1,7 @@
 var express = require('express')
 var fs = require("fs")
 var app = express()
-var globalArray = [0]
+var globalArray
 
 var server = app.listen(process.env.PORT || 1800, function () {
    var host = server.address().address
@@ -48,7 +48,7 @@ app.post('/array', function (data, res) {
     array[3][4] *= m5
     array[4][4] *= m5
     
-    if(globalArray == [0]){
+    if(globalArray == null){
         console.log("Here1")
         globalArray = array
     }
