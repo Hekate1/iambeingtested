@@ -10,5 +10,5 @@ var server = app.listen(process.env.PORT || 1800, function () {
 app.use(express.static(__dirname));
 
 app.post('/array', function (data, res) {
-    print(data)
+    console.log(data)
 })
