@@ -59,10 +59,10 @@ app.post('/array', function (data, res) {
     else{
         console.log("Here2")
         var average = globalArray.map(function (num, index) {
-            console.log(num + " : " + index)
-            return (num + array[index])/2;
+            console.log(((num + array2[index])/2.0))
+            return ((num + array2[index])/2.0);
         });
-        console.log(average)
+        
         globalArray = average
     }
     
