@@ -59,7 +59,6 @@ app.post('/array', function (data, res) {
     else{
         console.log("Here2")
         var average = globalArray.map(function (num, index) {
-            console.log(((num + array2[index])/2.0))
             return ((num + array2[index])/2.0);
         });
         
@@ -70,3 +69,7 @@ app.post('/array', function (data, res) {
     
     res.status(200).send()
 })
+
+app.get('/array', function (data, res) {
+    res.status(200).send(JSON.stringify(globalArray))
+}
