@@ -11,4 +11,5 @@ app.use(express.static(__dirname));
 
 app.post('/array', function (data, res) {
     console.log(data)
+    res.status(200)
 })
