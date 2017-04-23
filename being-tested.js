@@ -10,6 +10,9 @@ var server = app.listen(process.env.PORT || 1800, function () {
 app.use(express.static(__dirname));
 
 app.post('/array', function (data, res) {
-    console.log(data)
+    console.log(test1)
+    console.log(data.headers.myarray)
+    console.log(test2)
+    console.log(data.IncomingMessage.headers.myarray)
     res.status(200).send()
 })
